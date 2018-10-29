@@ -1,0 +1,40 @@
+{
+    "name": "jamesnuttall/omnipay-barclays-dl",
+    "type": "library",
+    "description": "Barclays ePDQ Direct Link driver for the Omnipay payment processing library.",
+    "keywords": [
+        "gateway",
+        "merchant",
+        "omnipay",
+        "pay",
+        "payment",
+        "barclays",
+        "epdq",
+        "directlink"
+    ],
+    "homepage": "https://github.com/jamesnuttall/omnipay-barclays-dl",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "James Nuttall",
+            "email": "james@ghostwhite.net"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "Omnipay\\BarclaysEpdqDl\\" : "src/"
+        }
+    },
+    "require": {
+        "omnipay/common": "~2.0"
+    },
+    "require-dev": {
+        "omnipay/tests": "~2.0",
+        "squizlabs/php_codesniffer": "^3"
+    },
+    "scripts": {
+        "test": "phpunit",
+        "check-style": "phpcs -p --standard=PSR2 src/",
+        "fix-style": "phpcbf -p --standard=PSR2 src/"
+    }
+}
