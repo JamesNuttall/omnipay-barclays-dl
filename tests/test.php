@@ -4,8 +4,6 @@ require('./bootstrap.php');
 
 $gateway = \Omnipay\Omnipay::create('BarclaysEpdqDl');
 $gateway->setClientId('ghostwhite');
-$gateway->setUserId('nosleep');
-$gateway->setPassword('28Ug3EFmVk@G');
 $gateway->setTestMode(true);
 
 // Example form data
