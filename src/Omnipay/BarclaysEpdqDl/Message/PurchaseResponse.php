@@ -24,7 +24,7 @@ class PurchaseResponse extends AbstractResponse
 
     public function isPending()
     {
-        return $this->data['STATUS'] == Gateway::RESULT_PAYMENT_WAITING;
+        return $this->data['STATUS'] == RESULT_PAYMENT_WAITING;
     }
 
     public function isRedirect()
@@ -34,11 +34,8 @@ class PurchaseResponse extends AbstractResponse
 
     public function isSuccessful()
     {
-        if (isset($this->data['STATUS'])) {
-            return $this->data['STATUS'] == Gateway::RESULT_PAYMENT_SUCCESS || $this->data['STATUS'] == Gateway::RESULT_PAYMENT_REQUESTED;
-        }
-
-        return false;
+        $statusCode = isset($this->data['STATUS']) ? $this->data['STATUS'] : false;
+        return ($statusCode == Gateway::RESULT_PAYMENT_SUCCESS || $statusCode == Gateway::RESULT_PAYMENT_REQUESTED);
     }
 
     public function getTransactionReference()
