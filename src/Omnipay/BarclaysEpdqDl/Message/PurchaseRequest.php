@@ -56,6 +56,23 @@ class PurchaseRequest extends AbstractRequest
         return $this->setParameter('password', $value);
     }
 
+    public function getShaIn()
+    {
+        return $this->getParameter('shaIn');
+    }
+    public function setShaIn($value)
+    {
+        return $this->setParameter('shaIn', $value);
+    }
+    public function getShaOut()
+    {
+        return $this->getParameter('shaOut');
+    }
+    public function setShaOut($value)
+    {
+        return $this->setParameter('shaOut', $value);
+    }
+
     public function getData()
     {
         $data = array();
@@ -63,21 +80,62 @@ class PurchaseRequest extends AbstractRequest
         $data['OPERATION'] = $this->operation;
         $data['PSPID']     = $this->getClientId();
         $data['ORDERID']   = $this->getTransactionId();
-
         $data['USERID']    = $this->getUserId();
         $data['PSWD']      = $this->getPassword();
-
         $data['CURRENCY']  = $this->getCurrency();
         $data['AMOUNT']    = $this->getAmountInteger();
 
         $card = $this->getCard();
         if ($card) {
+            // Required card details for transaction
             $data['CARDNO'] = $card->getNumber();
             $data['ED']     = $card->getExpiryDate('my');
             $data['CVC']    = $card->getCvv();
+
+            // Optional card details
+            $data['CN']            = $card->getName();
+            $data['COM']           = $card->getCompany();
+            $data['EMAIL']         = $card->getEmail();
+            $data['OWNERZIP']      = $card->getPostcode();
+            $data['OWNERTOWN']     = $card->getCity();
+            $data['OWNERCTY']      = $card->getCountry();
+            $data['OWNERTELNO']    = $card->getPhone();
+            $data['OWNERADDRESS']  = $card->getAddress1();
+            $data['OWNERADDRESS2'] = $card->getAddress2();
+        }
+
+        // Make sure all parameter keys are uppercase and no null values are passed.
+        $data = $this->cleanParameters($data);
+
+        // If shaIn was provided generate a SHASIGN
+        if ($this->getShaIn()) {
+            $data['SHASIGN'] = $this->calculateSha($data, $this->getShaIn());
         }
 
         return $data;
+    }
+
+    protected function cleanParameters($data)
+    {
+        $clean = array();
+        foreach ($data as $key => $value) {
+            if (!is_null($value) && $value !== false && $value !== '') {
+                $clean[strtoupper($key)] = $value;
+            }
+        }
+        return $clean;
+    }
+
+    public function calculateSha($data, $shaKey)
+    {
+        ksort($data);
+
+        $shaString = '';
+        foreach ($data as $key => $value) {
+            $shaString .= sprintf('%s=%s%s', strtoupper($key), $value, $shaKey);
+        }
+
+        return strtoupper(sha1($shaString));
     }
 
     public function sendData($data)
@@ -93,6 +151,7 @@ class PurchaseRequest extends AbstractRequest
 
         return $this->response = new PurchaseResponse($this, $response->getBody()->getContents());
     }
+
     public function getEndpoint()
     {
         return $this->getTestMode() ? $this->testEndpoint : $this->liveEndpoint;

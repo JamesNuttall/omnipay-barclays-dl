@@ -85,4 +85,21 @@ class Gateway extends AbstractGateway
     {
         return $this->setParameter('testMode', $value);
     }
+
+    public function getShaIn()
+    {
+        return $this->getParameter('shaIn');
+    }
+    public function setShaIn($value)
+    {
+        return $this->setParameter('shaIn', $value);
+    }
+    public function getShaOut()
+    {
+        return $this->getParameter('shaOut');
+    }
+    public function setShaOut($value)
+    {
+        return $this->setParameter('shaOut', $value);
+    }
 }
