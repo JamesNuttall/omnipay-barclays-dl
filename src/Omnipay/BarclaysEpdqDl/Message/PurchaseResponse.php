@@ -4,12 +4,7 @@ namespace Omnipay\BarclaysEpdqDl\Message;
 
 use Omnipay\Common\Message\AbstractResponse;
 use Omnipay\Common\Message\RequestInterface;
-
-const RESULT_PAYMENT_SUCCESS   = 5;
-const RESULT_PAYMENT_REQUESTED = 9;
-const RESULT_PAYMENT_INVALID   = 0;
-const RESULT_PAYMENT_REFUSED   = 2;
-const RESULT_PAYMENT_WAITING   = 51;
+use Omnipay\BarclaysEpdqDl\Gateway;
 
 /**
  * Barclays ePDQ Direct Link Purchase Response
@@ -29,7 +24,7 @@ class PurchaseResponse extends AbstractResponse
 
     public function isPending()
     {
-        return $this->data['STATUS'] == RESULT_PAYMENT_WAITING;
+        return $this->data['STATUS'] == Gateway::RESULT_PAYMENT_WAITING;
     }
 
     public function isRedirect()
@@ -39,7 +34,7 @@ class PurchaseResponse extends AbstractResponse
 
     public function isSuccessful()
     {
-        return isset($this->data['STATUS']) && ($this->data['STATUS'] == RESULT_PAYMENT_SUCCESS || $this->data['STATUS'] == RESULT_PAYMENT_REQUESTED);
+        return isset($this->data['STATUS']) && ($this->data['STATUS'] == Gateway::RESULT_PAYMENT_SUCCESS || $this->data['STATUS'] == Gateway::RESULT_PAYMENT_REQUESTED);
     }
 
     public function getTransactionReference()

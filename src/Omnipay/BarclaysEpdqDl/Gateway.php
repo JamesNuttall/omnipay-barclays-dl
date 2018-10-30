@@ -13,6 +13,12 @@ use Omnipay\BarclaysEpdqDl\Message\PurchaseRequest;
 class Gateway extends AbstractGateway
 {
 
+    const RESULT_PAYMENT_SUCCESS   = 5;
+    const RESULT_PAYMENT_REQUESTED = 9;
+    const RESULT_PAYMENT_INVALID   = 0;
+    const RESULT_PAYMENT_REFUSED   = 2;
+    const RESULT_PAYMENT_WAITING   = 51;
+
     public function getName()
     {
         return 'Barclays ePDQ Direct Link';
