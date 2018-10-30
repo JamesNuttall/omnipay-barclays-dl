@@ -30,7 +30,47 @@ repository.
 
 ### Basic purchase example
 
-    ...
+```php
+    // Gateway initialization
+    $gateway = \Omnipay\Omnipay::create('BarclaysEpdqDl');
+    $gateway->setClientId('xxxxxx');
+    $gateway->setUserId('xxxx');
+    $gateway->setPassword('xxxxxxx');
+    $gateway->setShaIn('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
+    $gateway->setTestMode(true);
+
+    // Card data
+    $card = [
+        'number' => 'xxxxxxxxxxxxxxxx',
+        'expiryMonth' => 'x',
+        'expiryYear' => 'xxxx',
+        'cvv' => 'xxx'
+    ];
+
+    // Try to send purchase request
+    try {
+        $response = $gateway->purchase(
+            [
+                'transactionId' => 'xxxxxxxxxx',
+                'amount' => '25.00',
+                'currency' => 'GBP',
+                'card' => $card
+            ]
+        )->send();
+
+        if ($response->isSuccessful()) {
+            // Payment successful
+            print($response->getTransactionReference());
+
+        } else {
+            // Payment failed
+            print($response->getMessage());
+        }
+    } catch (\Exception $e) {
+        // Internal error, log exception and display a generic message to the customer
+        exit("Error processing your payment. Please try again later.");
+    }
+```
 
 ## Craft Commerce
 
