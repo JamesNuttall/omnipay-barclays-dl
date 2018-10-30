@@ -18,28 +18,4 @@ class GatewayTest extends GatewayTestCase
 
         $this->gateway = new Gateway($this->getHttpClient(), $this->getHttpRequest());
     }
-
-    /**
-     * @expectedException Omnipay\Common\Exception\InvalidRequestException
-     */
-    public function testMerchantIdString()
-    {
-        $this->gateway->initialize([
-            'merchantId' => 'ABCDEFG',
-        ]);
-
-        $this->gateway->getMerchantId(true);
-    }
-
-    /**
-     * @expectedException Omnipay\Common\Exception\InvalidRequestException
-     */
-    public function testProjectIdString()
-    {
-        $this->gateway->initialize([
-            'projectId' => 'ABCDEFG',
-        ]);
-
-        $this->gateway->getProjectId(true);
-    }
 }
