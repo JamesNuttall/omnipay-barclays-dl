@@ -37,12 +37,6 @@ class Gateway extends AbstractGateway
      */
     public function purchase(array $parameters = array())
     {
-        // 'amount'   => '',
-        // 'currency' => 'GBP',
-        // 'cardNo'   => '',
-        // 'ED'       => '',
-        // 'CVC'      => '', 
-
         return $this->createRequest(PurchaseRequest::class, $parameters);
     }
 
