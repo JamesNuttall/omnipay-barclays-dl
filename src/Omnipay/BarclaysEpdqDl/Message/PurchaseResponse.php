@@ -84,18 +84,18 @@ class PurchaseResponse extends AbstractResponse
     {
         if (isset($this->statusMessages[$this->data['STATUS']])) {
             return $this->statusMessages[$this->data['STATUS']];
-        }   
+        }
 
         return null;
     }
 
     public function getNcError()
-    {   
+    {
         return isset($this->data['NCERROR']) ? $this->data['NCERROR'] : null;
     }
 
     public function getNcErrorPlus()
-    {   
+    {
         return isset($this->data['NCERRORPLUS']) ? $this->data['NCERRORPLUS'] : null;
     }
 }
