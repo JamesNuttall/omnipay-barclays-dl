@@ -42,7 +42,7 @@ $gateway->setTestMode(true);
 // Card data
 $card = [
     'number' => 'xxxxxxxxxxxxxxxx',
-    'expiryMonth' => 'x',
+    'expiryMonth' => 'xx',
     'expiryYear' => 'xxxx',
     'cvv' => 'xxx'
 ];
@@ -69,7 +69,7 @@ try {
 } catch (\Exception $e) {
     // Internal error, log exception and display a generic message to the customer
     exit("Error processing your payment. Please try again later.");
-    }
+}
 ```
 
 ## Craft Commerce
