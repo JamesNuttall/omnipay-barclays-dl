@@ -12,3 +12,16 @@ processing library for PHP 5.
 
 This package implements [Barclays ePDQ Direct Link](https://support.epdq.co.uk/en/guides/integration%20guides/directlink)
 support, and supports PHP 7.1+.
+
+Table of Contents
+=================
+
+   * [Omnipay: Barclays ePDQ DirectLink](#omnipay-barclays-epdq-directlink)
+   * [Table of Contents](#table-of-contents)
+   * [Installation](#installation)
+
+# Installation
+
+Using composer, the master branch can be installed like this:
+
+    composer require league/omnipay jamesnuttall/omnipay-barclays-dl
