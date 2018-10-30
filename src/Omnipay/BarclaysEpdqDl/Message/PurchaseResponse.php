@@ -34,7 +34,11 @@ class PurchaseResponse extends AbstractResponse
 
     public function isSuccessful()
     {
-        return isset($this->data['STATUS']) && ($this->data['STATUS'] == Gateway::RESULT_PAYMENT_SUCCESS || $this->data['STATUS'] == Gateway::RESULT_PAYMENT_REQUESTED);
+        if (isset($this->data['STATUS'])) {
+            return $this->data['STATUS'] == Gateway::RESULT_PAYMENT_SUCCESS || $this->data['STATUS'] == Gateway::RESULT_PAYMENT_REQUESTED;
+        }
+
+        return false;
     }
 
     public function getTransactionReference()
