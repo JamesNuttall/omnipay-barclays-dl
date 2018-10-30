@@ -11,6 +11,43 @@ use Omnipay\BarclaysEpdqDl\Gateway;
  */
 class PurchaseResponse extends AbstractResponse
 {
+    protected $statusMessages = array(
+        0  => "Incomplete or invalid",
+        1  => "Cancelled by client",
+        2  => "Authorisation refused",
+        4  => "Order stored",
+        41 => "Waiting client payment",
+        5  => "Authorised",
+        51 => "Authorisation waiting",
+        52 => "Authorisation not known",
+        59 => "Author. to get manually",
+        6  => "Authorised and canceled",
+        61 => "Author. deletion waiting",
+        62 => "Author. deletion uncertain",
+        63 => "Author. deletion refused",
+        7  => "Payment deleted",
+        71 => "Payment deletion pending",
+        72 => "Payment deletion uncertain",
+        73 => "Payment deletion refused",
+        74 => "Payment deleted (not accepted)",
+        75 => "Deletion processed by merchant",
+        8  => "Refund",
+        81 => "Refund pending",
+        82 => "Refund uncertain",
+        83 => "Refund refused",
+        84 => "Payment declined by the acquirer (will be debited)",
+        85 => "Refund processed by merchant",
+        9  => "Payment requested",
+        91 => "Payment processing",
+        92 => "Payment uncertain",
+        93 => "Payment refused",
+        94 => "Refund declined by the acquirer",
+        95 => "Payment processed by merchant",
+        97 => "Being processed (intermediate technical status)",
+        98 => "Being processed (intermediate technical status)",
+        99 => "Being processed (intermediate technical status)"
+    );
+
     public function __construct(RequestInterface $request, $data)
     {
         $this->request = $request;
@@ -45,16 +82,20 @@ class PurchaseResponse extends AbstractResponse
 
     public function getMessage()
     {
-        $message = '';
+        if (isset($this->statusMessages[$this->data['STATUS']])) {
+            return $this->statusMessages[$this->data['STATUS']];
+        }   
+        
+        return null;
+    }
 
-        if (isset($this->data['NCERROR'])) {
-            $message .= 'NCERROR: '.$this->data['NCERROR'].' - ';
-        }
+    public function getNcError()
+    {   
+        return isset($this->data['NCERROR']) ? $this->data['NCERROR'] : null;
+    }
 
-        if (isset($this->data['NCERRORPLUS'])) {
-            $message .= $this->data['NCERRORPLUS'];
-        }
-
-        return $message;
+    public function getNcErrorPlus()
+    {   
+        return isset($this->data['NCERRORPLUS']) ? $this->data['NCERRORPLUS'] : null;
     }
 }
