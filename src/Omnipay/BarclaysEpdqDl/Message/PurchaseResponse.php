@@ -85,7 +85,7 @@ class PurchaseResponse extends AbstractResponse
         if (isset($this->statusMessages[$this->data['STATUS']])) {
             return $this->statusMessages[$this->data['STATUS']];
         }   
-        
+
         return null;
     }
 
