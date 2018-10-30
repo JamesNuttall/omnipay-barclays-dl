@@ -12,7 +12,7 @@ const RESULT_PAYMENT_REFUSED   = 2;
 const RESULT_PAYMENT_WAITING   = 51;
 
 /**
- * BarclaysEpdq Purchase Response
+ * Barclays ePDQ Direct Link Purchase Response
  */
 class PurchaseResponse extends AbstractResponse
 {

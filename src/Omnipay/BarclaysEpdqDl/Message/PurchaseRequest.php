@@ -5,7 +5,7 @@ namespace Omnipay\BarclaysEpdqDl\Message;
 use Omnipay\Common\Message\AbstractRequest;
 
 /**
- * BarclaysEpdq Essential Purchase Request
+ * Barclays ePDQ Direct Link Purchase Request
  */
 class PurchaseRequest extends AbstractRequest
 {

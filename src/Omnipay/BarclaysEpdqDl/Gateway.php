@@ -6,9 +6,9 @@ use Omnipay\Common\AbstractGateway;
 use Omnipay\BarclaysEpdqDl\Message\PurchaseRequest;
 
 /**
- * BarclaysEpdq Essential Gateway
+ * Barclays ePDQ Direct Link Gateway
  *
- * @link http://www.barclaycard.co.uk/business/epdq-cpi/technical-info
+ * @link https://support.epdq.co.uk/en/guides/integration%20guides/directlink
  */
 class Gateway extends AbstractGateway
 {
