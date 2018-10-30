@@ -2,7 +2,7 @@
 
 **Barclays ePDQ DirectLink driver for the Omnipay PHP payment processing library**
 
-[![Build Status]()]()
+[![Build Status](https://travis-ci.org/JamesNuttall/omnipay-barclays-dl.svg?branch=master)](https://travis-ci.org/JamesNuttall/omnipay-barclays-dl)
 [![Latest Stable Version]()]()
 [![Latest Unstable Version]()]()
 [![Total Downloads]()]()
