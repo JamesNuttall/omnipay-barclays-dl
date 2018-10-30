@@ -13,8 +13,25 @@ processing library for PHP 5.
 This package implements [Barclays ePDQ Direct Link](https://support.epdq.co.uk/en/guides/integration%20guides/directlink)
 support, and supports PHP 7.1+.
 
-# Installation
+## Installation
 
 Using composer, the master branch can be installed like this:
 
     composer require league/omnipay jamesnuttall/omnipay-barclays-dl
+
+## Basic Usage
+
+The following gateways are provided by this package:
+
+* Barclays ePDQ DirectLink
+
+For general usage instructions, please see the main [Omnipay](https://github.com/thephpleague/omnipay)
+repository.
+
+### Basic purchase example
+
+    ...
+
+## Craft Commerce
+
+If you want to use this payment gateway with [Craft Commerce 2](https://github.com/craftcms/commerce), please see the Craft Commerce [Barclays ePDQ DirectLink gateway wrapper]().
