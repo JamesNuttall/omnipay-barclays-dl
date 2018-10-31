@@ -1,4 +1,5 @@
 {
+    "version": "1.0.0",
     "name": "jamesnuttall/omnipay-barclays-dl",
     "type": "library",
     "description": "Barclays ePDQ Direct Link driver for the Omnipay payment processing library.",
