@@ -152,7 +152,7 @@ class PurchaseRequest extends AbstractRequest
         $response = $httpRequest->send();
 
         // if sha is present then maybe we need to check the shaIn/shasign
-        return $this->response = new PurchaseResponse($this, $response->getBody()->getContents());
+        return $this->response = new PurchaseResponse($this, (string) $response->getBody());
     }
 
     public function getEndpoint()
