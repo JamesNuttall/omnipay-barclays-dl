@@ -17,7 +17,7 @@ support, and supports PHP 7.1+.
 
 Using composer, the master branch can be installed like this:
 
-    composer require league/omnipay jamesnuttall/omnipay-barclays-dl
+    composer require league/omnipay jamesnuttall/omnipay-barclays-dl:3.0
 
 ## Basic Usage
 
