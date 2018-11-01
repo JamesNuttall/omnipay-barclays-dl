@@ -11,7 +11,7 @@
 processing library for PHP 5.
 
 This package implements [Barclays ePDQ Direct Link](https://support.epdq.co.uk/en/guides/integration%20guides/directlink)
-support, and supports PHP 7.1+.
+support, and supports PHP 7.1+ on Omnipay 3.x. For use of Omnipay 2.x please see the [2.x branch](https://github.com/JamesNuttall/omnipay-barclays-dl/tree/2.x).
 
 ## Installation
 
