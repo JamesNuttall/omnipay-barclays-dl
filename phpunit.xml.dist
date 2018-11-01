@@ -8,8 +8,7 @@
          convertWarningsToExceptions="true"
          processIsolation="false"
          stopOnFailure="false"
-         syntaxCheck="false"
-         beStrictAboutTestsThatDoNotTestAnything="false">
+         syntaxCheck="false">
     <testsuites>
         <testsuite name="Omnipay Test Suite">
             <directory>./tests/</directory>
@@ -20,10 +19,4 @@
             <directory>./src</directory>
         </whitelist>
     </filter>
-    <php>
-        <env name="APP_ENV" value="testing"/>
-        <env name="CACHE_DRIVER" value="array"/>
-        <env name="SESSION_DRIVER" value="array"/>
-        <env name="QUEUE_DRIVER" value="sync"/>
-    </php>
 </phpunit>
