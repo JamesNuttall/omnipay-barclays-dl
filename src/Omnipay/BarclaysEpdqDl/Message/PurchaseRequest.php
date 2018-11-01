@@ -140,7 +140,7 @@ class PurchaseRequest extends AbstractRequest
 
     public function sendData($data)
     {
-        $response = $this->httpClient->request(
+        $httpRequest = $this->httpClient->createRequest(
             'POST',
             $this->getEndpoint(),
             [
@@ -148,7 +148,10 @@ class PurchaseRequest extends AbstractRequest
             ],
             http_build_query($data, '', '&')
         );
+        
+        $response = $httpRequest->send();
 
+        // if sha is present then maybe we need to check the shaIn/shasign
         return $this->response = new PurchaseResponse($this, $response->getBody()->getContents());
     }
 
