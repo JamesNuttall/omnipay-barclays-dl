@@ -17,7 +17,7 @@ support, and supports PHP 5.5+ on Omnipay 2.x. For use of Omnipay 3.x please see
 
 Using composer, the master branch can be installed like this:
 
-    composer require league/omnipay jamesnuttall/omnipay-barclays-dl
+    composer require league/omnipay jamesnuttall/omnipay-barclays-dl:~2.0
 
 ## Basic Usage
 
