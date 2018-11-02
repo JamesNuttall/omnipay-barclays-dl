@@ -151,7 +151,8 @@ class PurchaseRequest extends AbstractRequest
         
         $response = $httpRequest->send();
 
-        // if sha is present then maybe we need to check the shaIn/shasign
+        // calculate shaOut see if the request has been tampered with.
+
         return $this->response = new PurchaseResponse($this, (string) $response->getBody());
     }
 

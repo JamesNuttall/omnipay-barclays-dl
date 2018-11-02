@@ -2,7 +2,7 @@
 
 namespace Omnipay\BarclaysEpdqDl\Message;
 
-use Omnipay\Common\Message\AbstractResponse;
+use Omnipay\BarclaysEpdqDl\Message\AbstractResponse;
 use Omnipay\Common\Message\RequestInterface;
 use Omnipay\BarclaysEpdqDl\Gateway;
 
@@ -61,41 +61,42 @@ class PurchaseResponse extends AbstractResponse
 
     public function isPending()
     {
-        return $this->data['STATUS'] == RESULT_PAYMENT_WAITING;
+        return $this->getDataItem('STATUS') == RESULT_PAYMENT_WAITING;
     }
 
     public function isRedirect()
     {
-        return false;
+        return true;
+    }
+
+    public function getRedirectUrl()
+    {
+        return ($this->isSuccessful()) ? $this->getDataItem('ACCEPTURL', '/') : $this->getDataItem('DECLINEURL', '?paymentError=true');
     }
 
     public function isSuccessful()
     {
-        $statusCode = isset($this->data['STATUS']) ? $this->data['STATUS'] : false;
+        $statusCode = $this->getDataItem('STATUS');
         return ($statusCode == Gateway::RESULT_PAYMENT_SUCCESS || $statusCode == Gateway::RESULT_PAYMENT_REQUESTED);
     }
 
     public function getTransactionReference()
     {
-        return $this->data['PAYID'];
+        return $this->getDataItem('PAYID');
     }
 
     public function getMessage()
     {
-        if (isset($this->statusMessages[$this->data['STATUS']])) {
-            return $this->statusMessages[$this->data['STATUS']];
-        }
-
-        return null;
+        return $this->statusMessages[$this->getDataItem('STATUS')];
     }
 
     public function getNcError()
     {
-        return isset($this->data['NCERROR']) ? $this->data['NCERROR'] : null;
+        return $this->getDataItem('NCERROR');
     }
 
     public function getNcErrorPlus()
     {
-        return isset($this->data['NCERRORPLUS']) ? $this->data['NCERRORPLUS'] : null;
+        return $this->getDataItem('NCERRORPLUS');
     }
 }
