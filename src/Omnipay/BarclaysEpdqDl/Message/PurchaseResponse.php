@@ -71,7 +71,9 @@ class PurchaseResponse extends AbstractResponse
 
     public function getRedirectUrl()
     {
-        return ($this->isSuccessful()) ? $this->getDataItem('ACCEPTURL', '/') : $this->getDataItem('DECLINEURL', '?paymentError=true');
+        return ($this->isSuccessful()) ?
+            $this->getDataItem('ACCEPTURL', '/') :
+            $this->getDataItem('DECLINEURL', '?paymentError=true');
     }
 
     public function isSuccessful()
