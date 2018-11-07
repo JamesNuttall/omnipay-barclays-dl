@@ -12,7 +12,7 @@ use Omnipay\BarclaysEpdqDl\Gateway;
 class PurchaseResponse extends AbstractResponse
 {
     protected $statusMessages = array(
-        0  => "Incomplete or invalid",
+        0  => "Incomplete or invalid payment",
         1  => "Cancelled by client",
         2  => "Authorisation refused",
         4  => "Order stored",
@@ -61,19 +61,12 @@ class PurchaseResponse extends AbstractResponse
 
     public function isPending()
     {
-        return $this->getDataItem('STATUS') == RESULT_PAYMENT_WAITING;
+        return $this->getDataItem('STATUS') == Gateway::RESULT_PAYMENT_WAITING;
     }
 
     public function isRedirect()
     {
-        return true;
-    }
-
-    public function getRedirectUrl()
-    {
-        return ($this->isSuccessful()) ?
-            $this->getDataItem('ACCEPTURL', '/') :
-            $this->getDataItem('DECLINEURL', '?paymentError=true');
+        return false;
     }
 
     public function isSuccessful()
