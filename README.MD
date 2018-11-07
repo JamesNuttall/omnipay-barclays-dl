@@ -71,7 +71,3 @@ try {
     exit("Error processing your payment. Please try again later.");
 }
 ```
-
-## Craft Commerce
-
-If you want to use this payment gateway with [Craft Commerce 2](https://github.com/craftcms/commerce), please see the Craft Commerce [Barclays ePDQ DirectLink gateway wrapper]().
