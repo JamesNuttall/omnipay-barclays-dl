@@ -3,7 +3,7 @@
 namespace Omnipay\BarclaysEpdqDl;
 
 use Guzzle\Http\Client as HttpClient;
-use Omnipay\Common\AbstractGateway AS OmnipayAbstractGateway;
+use Omnipay\Common\AbstractGateway as OmnipayAbstractGateway;
 
 abstract class AbstractGateway extends OmnipayAbstractGateway
 {
