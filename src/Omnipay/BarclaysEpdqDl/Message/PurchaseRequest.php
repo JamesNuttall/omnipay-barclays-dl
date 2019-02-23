@@ -154,8 +154,6 @@ class PurchaseRequest extends AbstractRequest
         
         $response = $httpRequest->send();
 
-        // calculate shaOut see if the request has been tampered with.
-
         return $this->response = new PurchaseResponse($this, (string) $response->getBody());
     }
 
