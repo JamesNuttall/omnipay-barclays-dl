@@ -1,4 +1,4 @@
-# Omnipay: Barclays ePDQ DirectLink
+# Omnipay: Barclays ePDQ DirectLink (WIP - NOT STABLE)
 
 **Barclays ePDQ DirectLink driver for the Omnipay PHP payment processing library**
 
