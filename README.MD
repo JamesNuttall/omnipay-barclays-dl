@@ -20,6 +20,17 @@ This gateway currently only supports the following:
 * Purchase Request
 * Purchase Response
 
+## ROADMAP
+
+Below are features/changes I have planned to work on in the future:
+
+* Cleanup Branches
+* Refund Requests
+* Maintenance Requests
+* Pre-Authorization Requests (Pretty sure they aren't possible in the current state of package??)
+* Potentially Improving response parsing/reporting
+* Order Query Requests
+
 ## Installation
 
 Using composer, the master branch can be installed like this:
@@ -78,7 +89,3 @@ try {
     exit("Error processing your payment. Please try again later.");
 }
 ```
-
-## Craft Commerce
-
-If you want to use this payment gateway with [Craft Commerce 2](https://github.com/craftcms/commerce), please see the Craft Commerce [Barclays ePDQ DirectLink gateway wrapper]().
