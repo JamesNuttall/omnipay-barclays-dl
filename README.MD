@@ -24,12 +24,12 @@ This gateway currently only supports the following:
 
 Below are features/changes I have planned to work on in the future:
 
-* Cleanup Branches
-* Refund Requests
-* Maintenance Requests
-* Pre-Authorization Requests (Pretty sure they aren't possible in the current state of package??)
-* Potentially Improving response parsing/reporting
-* Order Query Requests
+* [ ] Cleanup Branches
+* [ ] Refund Requests
+* [ ] Maintenance Requests
+* [ ] Pre-Authorization Requests (Pretty sure they aren't possible in the current state of package??)
+* [ ] Potentially Improving response parsing/reporting
+* [ ] Order Query Requests
 
 ## Installation
 
